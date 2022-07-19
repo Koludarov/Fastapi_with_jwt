@@ -1,0 +1,14 @@
+Generic single-database configuration.
+
+#    def get_user_id(self, user_id: int) -> Optional[dict]:
+       # """Получить детальную информацию юзера."""
+ """       if cached_user := self.cache.get(key=f"{user_id}"):
+            return json.loads(cached_user)
+
+
+@lru_cache()
+def get_user_service(database,
+    cache: AbstractCache = Depends(get_cache),
+    session: Session = Depends(get_session),
+) -> UserService:
+    return UserService(database=database, cache=cache, session=session)"""
