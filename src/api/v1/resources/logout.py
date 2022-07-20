@@ -21,7 +21,7 @@ async def logout(users: UserService = Depends(get_user_service),
     user = await users.get_by_id(user_id=current_user.id)
     if user is None:
         raise HTTPException(status_code=status.HTTP_400_UNAUTHORIZED,
-                            detail='Invalid refresh token')
+                            detail='Not authorized')
     access_service.save_token(token=token)
     ref_tok_uuid = decode_access_token(token).get('refresh_uuid')
     refresh_service.remove_refresh_token(user_id=user.id,
